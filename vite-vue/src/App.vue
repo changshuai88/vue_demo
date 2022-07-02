@@ -1,4 +1,4 @@
-<template>
+<template class="all">
   <div class="banner"></div>
   <div id="nav">
     <router-link to="/">Home</router-link>|
@@ -8,7 +8,19 @@
     <router-view></router-view>
   </div>
 </template>
-<style scoped>
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 0;
+}
+.all {
+  margin: 0;
+  padding: 0;
+}
 .banner {
   margin: 0 auto;
   width: 80%;
