@@ -1,5 +1,11 @@
 <template >
-  <div class="banner"></div>
+  <div class="banner">
+    <el-row tag="span">
+      <el-col :span="4" class="logo">LOGO</el-col>
+      <el-col :span="12"></el-col>
+      <el-col :span="8" class="logo">18222122805</el-col>
+    </el-row>
+  </div>
   <!-- <div id="nav"> -->
   <el-row id="nav">
     <el-button type="success"><router-link to="/">HOME</router-link></el-button>
@@ -13,6 +19,9 @@
   </div>
 </template>
 <style>
+body {
+  margin: 0;
+}
 #app {
   width: 90%;
   height: 100vh;
@@ -27,7 +36,7 @@
 .banner {
   /* margin: 0 auto; */
   width: 100%;
-  height: 100px;
+  height: 80px;
   background-color: blue;
 }
 #nav {
@@ -47,5 +56,11 @@
   /* height: 100; */
   background-color: chartreuse;
   float: right;
+}
+.logo {
+  background-color: #2c3e50;
+  color: white;
+  height: 80px;
+  line-height: 80px;
 }
 </style>
