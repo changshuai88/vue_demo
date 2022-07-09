@@ -2,7 +2,9 @@
   <div class="banner">
     <el-row tag="span">
       <el-col :span="4" class="logo">LOGO</el-col>
-      <el-col :span="12"></el-col>
+      <el-col :span="12">
+        <Search />
+      </el-col>
       <el-col :span="8" class="logo">18222122805</el-col>
     </el-row>
   </div>
@@ -14,10 +16,25 @@
     >
   </el-row>
   <!-- </div> -->
-  <div class="lf">
-    <router-view></router-view>
-  </div>
+  <el-row>
+    <div class="lf">
+      <router-view></router-view>
+    </div>
+  </el-row>
+  <el-row><Footer /></el-row>
 </template>
+<script>
+import Search from "@/components/Search.vue";
+import Footer from "@/components/Footer.vue";
+
+export default {
+  name: "APP",
+  components: {
+    Search,
+    Footer,
+  },
+};
+</script>
 <style>
 body {
   margin: 0;
@@ -25,7 +42,7 @@ body {
 #app {
   width: 90%;
   height: 100vh;
-  background-color: yellow;
+  /* background-color: yellow; */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
