@@ -12,10 +12,13 @@ export default {
 </script>
 
 <template>
-  <el-input :placeholder="info">
-    <i slot="prefix" class="el-input__icon el-icon-search"></i>
-  </el-input>
+  <el-input :placeholder="info" class="search"> </el-input>
+  <el-button slot="append" icon="el-icon-search"></el-button>
 </template>
 
 <style scoped>
+.search {
+  line-height: 100%;
+  height: 100%;
+}
 </style>
