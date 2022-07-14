@@ -1,5 +1,6 @@
 <template >
-  <Banner />
+  <!-- <Banner /> -->
+
   <!-- <div class="banner">
     <el-row tag="span">
       <el-col :span="4" class="logo">LOGO</el-col>
@@ -11,11 +12,17 @@
   </div> -->
   <!-- <div id="nav"> -->
   <el-row id="nav">
-    <el-button type="success"><router-link to="/">HOME</router-link></el-button>
-    <el-button type="success"
-      ><router-link to="/about">ABOUT</router-link></el-button
-    >
+    <el-col :span="6" class="logo"><span>VOTAI</span></el-col>
+    <el-col :span="18">
+      <el-button type="success"
+        ><router-link to="/">HOME</router-link></el-button
+      >
+      <el-button type="success"
+        ><router-link to="/about">ABOUT</router-link></el-button
+      >
+    </el-col>
   </el-row>
+  <lunbotu />
   <!-- </div> -->
   <el-row class="main">
     <el-col :span="4"></el-col>
@@ -28,14 +35,16 @@
 <script>
 import Search from "@/components/Search.vue";
 import Footer from "@/components/Footer.vue";
-import Banner from "@/components/Banner.vue";
+// import Banner from "@/components/Banner.vue";
+import lunbotu from "@/components/lunbotu.vue";
 
 export default {
   name: "APP",
   components: {
     Search,
     Footer,
-    Banner,
+    // Banner,
+    lunbotu,
   },
 };
 </script>
@@ -66,7 +75,7 @@ body {
 #nav {
   /* margin: 0 auto; */
   width: 100%;
-  /* height: 50px; */
+  height: 90px;
   background-color: azure;
   line-height: 50px;
   text-align: center;
@@ -78,7 +87,8 @@ body {
 .logo {
   background-color: #2c3e50;
   color: white;
-  height: 80px;
+  height: 100%;
   line-height: 80px;
+  font-size: 80px;
 }
 </style>

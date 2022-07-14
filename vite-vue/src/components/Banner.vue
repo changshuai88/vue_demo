@@ -8,7 +8,10 @@
         <Search style="width: 1em; height: 1em; margin-right: 8px" />
       </el-input>
     </el-col>
-    <el-col :span="6"></el-col>
+    <el-col :span="6">
+      <p>grader spare parts</p>
+      <span>18222122805</span>
+    </el-col>
   </el-row>
 </template>
 
