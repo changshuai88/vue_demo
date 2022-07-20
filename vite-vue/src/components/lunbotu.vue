@@ -11,12 +11,9 @@
 import { ref, reactive } from "vue";
 // import { Search } from "@element-plus/icons-vue";
 const imgs = reactive([
-  "http://www.lylongyi.com/images/l/page_index/1610695325Yzu0.jpg",
-  "http://www.lylongyi.com/images/l/page_index/1610694893dkNh.jpg",
-  "http://www.lylongyi.com/images/l/page_index/1610695325Yzu0.jpg",
-  "http://www.lylongyi.com/images/l/page_index/1610694893dkNh.jpg",
-  "http://www.lylongyi.com/images/l/page_index/1610695325Yzu0.jpg",
-  "http://www.lylongyi.com/images/l/page_index/1610694893dkNh.jpg",
+  "http://www.votai.net/UploadFiles/Album/20140922100228673.jpg",
+  "http://www.votai.net/UploadFiles/Album/20140922100204423.jpg",
+  "http://www.votai.net/UploadFiles/Album/20140922100143361.jpg",
 ]);
 
 console.log(imgs);

@@ -1,32 +1,17 @@
 <template >
-  <!-- <Banner /> -->
-
-  <!-- <div class="banner">
-    <el-row tag="span">
-      <el-col :span="4" class="logo">LOGO</el-col>
-      <el-col :span="12">
-        <Search />
-      </el-col>
-      <el-col :span="8" class="logo">18222122805</el-col>
-    </el-row>
-  </div> -->
-  <!-- <div id="nav"> -->
   <el-row id="nav">
-    <el-col :span="6" class="logo"><span>VOTAI</span></el-col>
+    <el-col :span="6" class="logo"
+      ><img src="@/assets/logo.png" alt=""
+    /></el-col>
     <el-col :span="18">
-      <el-button type="success"
-        ><router-link to="/">HOME</router-link></el-button
-      >
-      <el-button type="success"
-        ><router-link to="/about">ABOUT</router-link></el-button
-      >
+      <daohang />
     </el-col>
+    <!-- <el-col :span="6"></el-col> -->
   </el-row>
   <lunbotu />
   <!-- </div> -->
   <el-row class="main">
-    <el-col :span="4"></el-col>
-    <el-col :span="20">
+    <el-col :span="24">
       <router-view></router-view>
     </el-col>
   </el-row>
@@ -37,6 +22,7 @@ import Search from "@/components/Search.vue";
 import Footer from "@/components/Footer.vue";
 // import Banner from "@/components/Banner.vue";
 import lunbotu from "@/components/lunbotu.vue";
+import daohang from "@/components/daohang.vue";
 
 export default {
   name: "APP",
@@ -45,6 +31,7 @@ export default {
     Footer,
     // Banner,
     lunbotu,
+    daohang,
   },
 };
 </script>
@@ -76,7 +63,8 @@ body {
   /* margin: 0 auto; */
   width: 100%;
   height: 90px;
-  background-color: azure;
+  background-color: #545c64;
+  color: rgb(247, 223, 7);
   line-height: 50px;
   text-align: center;
   /* padding-top: 15px; */
@@ -85,10 +73,13 @@ body {
 }
 
 .logo {
-  background-color: #2c3e50;
-  color: white;
+  /* padding-right: 3px;
+  background-color: #2c3e50; */
   height: 100%;
   line-height: 80px;
   font-size: 80px;
+}
+.logo img {
+  height: 100%;
 }
 </style>
