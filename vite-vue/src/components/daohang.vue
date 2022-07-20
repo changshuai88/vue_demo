@@ -52,4 +52,7 @@ a {
 .router-link-active {
   text-decoration: none;
 }
+.el-menu--horizontal {
+  border-bottom: none;
+}
 </style>
