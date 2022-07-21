@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <div class="left">Copyright © 2019-2021 十三. All rights reserved.</div>
+    <div class="left">天津市西青区中北工业园南园红运路11号</div>
     <div class="right">
       <a target="_blank" href="https://github.com/newbee-ltd/vue3-admin"
         >vue3-admin Version 3.0.0</a
