@@ -9,13 +9,13 @@
     @select="handleSelect"
   >
     <el-menu-item index="1"
-      ><router-link to="/" underline="false">HOME</router-link></el-menu-item
+      ><router-link to="/" underline="false">首页</router-link></el-menu-item
     >
     <el-menu-item index="5"
-      ><router-link to="/about">ABOUT</router-link></el-menu-item
+      ><router-link to="/about">公司介绍</router-link></el-menu-item
     >
     <el-sub-menu index="2">
-      <template #title>Workspace</template>
+      <template #title>产品中心</template>
       <el-menu-item index="2-1">item one</el-menu-item>
       <el-menu-item index="2-2">item two</el-menu-item>
       <el-menu-item index="2-3">item three</el-menu-item>
@@ -26,8 +26,8 @@
         <el-menu-item index="2-4-3">item three</el-menu-item>
       </el-sub-menu>
     </el-sub-menu>
-    <el-menu-item index="3">Info</el-menu-item>
-    <el-menu-item index="4">Orders</el-menu-item>
+    <el-menu-item index="3">新闻信息</el-menu-item>
+    <el-menu-item index="4">联系我们</el-menu-item>
   </el-menu>
 </template>
 
