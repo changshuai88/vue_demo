@@ -8,13 +8,14 @@
     </el-col>
   </el-row>
   <lunbotu />
+  <quickbar />
   <!-- </div> -->
   <el-row class="main">
     <el-col :span="24">
       <router-view></router-view>
     </el-col>
   </el-row>
-  <el-row><Footer /></el-row>
+  <Footer />
 </template>
 <script>
 import Search from "@/components/Search.vue";
@@ -22,6 +23,7 @@ import Footer from "@/components/Footer.vue";
 // import Banner from "@/components/Banner.vue";
 import lunbotu from "@/components/lunbotu.vue";
 import daohang from "@/components/daohang.vue";
+import Quickbar from "@/components/Quickbar.vue";
 
 export default {
   name: "APP",
@@ -31,6 +33,7 @@ export default {
     // Banner,
     lunbotu,
     daohang,
+    Quickbar,
   },
 };
 </script>
