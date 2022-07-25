@@ -16,7 +16,7 @@ const imgs = reactive([
   "http://www.votai.net/UploadFiles/Album/20140922100143361.jpg",
 ]);
 
-console.log(imgs);
+// console.log(imgs);
 </script>
 
 
