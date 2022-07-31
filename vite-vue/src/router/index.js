@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/home/Home.vue'
-import About from '@/views/About.vue'
+import About from '@/views/about/About.vue'
 import Product from '@/views/product/index.vue'
 import Py from '@/views/product/Py/index.vue'
 

@@ -8,28 +8,15 @@
     active-text-color="#ffd04b"
     @select="handleSelect"
   >
-    <el-menu-item index="1"
+    <el-menu-item index="/"
       ><router-link to="/" underline="false">首页</router-link></el-menu-item
     >
-    <el-menu-item index="5"
+    <el-menu-item index="/about"
       ><router-link to="/about">公司介绍</router-link></el-menu-item
     >
-    <el-sub-menu index="2">
-      <template #title
-        ><router-link to="/product">产品中心</router-link></template
-      >
-      <el-menu-item index="2-1"
-        ><router-link to="/product/py">item one</router-link></el-menu-item
-      >
-      <el-menu-item index="2-2">item two</el-menu-item>
-      <el-menu-item index="2-3">item three</el-menu-item>
-      <el-sub-menu index="2-4">
-        <template #title>item four</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-        <el-menu-item index="2-4-2">item two</el-menu-item>
-        <el-menu-item index="2-4-3">item three</el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
+    <el-menu-item index="/product"
+      ><router-link to="/product">产品中心</router-link></el-menu-item
+    >
     <el-menu-item index="3">新闻信息</el-menu-item>
     <el-menu-item index="4">联系我们</el-menu-item>
   </el-menu>
@@ -38,10 +25,11 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 
-const activeIndex = ref("1");
-const activeIndex2 = ref("1");
+const activeIndex = ref("/");
+const activeIndex2 = ref("/");
 const handleSelect = (key: string, keyPath: string[]) => {
-  // console.log(key, keyPath);
+  console.log(location.href);
+  console.log(key, keyPath);
 };
 </script>
 <style scoped>

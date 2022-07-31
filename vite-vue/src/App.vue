@@ -6,6 +6,7 @@
     <el-col :span="18">
       <daohang />
     </el-col>
+    <!-- <el-col :span="6"><search /></el-col> -->
   </el-row>
   <lunbotu />
   <quickbar />

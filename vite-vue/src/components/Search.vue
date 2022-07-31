@@ -3,7 +3,7 @@ import { ref } from "vue";
 export default {
   name: "Search",
   setup() {
-    const info = ref("请输入内容");
+    const info = ref("请输入内容...");
     return {
       info,
     };
@@ -13,12 +13,13 @@ export default {
 
 <template>
   <el-input :placeholder="info" class="search"> </el-input>
-  <el-button slot="append" icon="el-icon-search"></el-button>
+  <!-- <el-button slot="append" icon="el-icon-search"></el-button> -->
 </template>
 
 <style scoped>
 .search {
-  line-height: 100%;
-  height: 100%;
+  margin-top: 30px;
+  line-height: 20%;
+  height: 20%;
 }
 </style>
