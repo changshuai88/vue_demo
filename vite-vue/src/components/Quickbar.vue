@@ -8,10 +8,11 @@
         box-shadow: var(--el-box-shadow-lighter);
         text-align: center;
         line-height: 40px;
-        color: #1989fa;
+        font-size: 20px;
+        color: #f0c649;
       "
     >
-      UP
+      顶
     </div>
   </el-backtop>
 </template>
