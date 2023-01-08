@@ -1,7 +1,5 @@
 <template>
-  <div class="tiangong">
-    <button>hello</button>
-  </div>
+  <div class="tiangong"></div>
 </template>
 
 <script>
