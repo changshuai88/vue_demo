@@ -28,8 +28,7 @@ import { ref } from "vue";
 const activeIndex = ref("/");
 const activeIndex2 = ref("/");
 const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(location.href);
-  console.log(key, keyPath);
+  console.log(keyPath);
 };
 </script>
 <style scoped>
