@@ -15,7 +15,7 @@
 2.在main.js中引入router，并在项目挂载中use（router）
 3.在src文件夹中创建router文件夹，并创建index.js
 4.在index.js中做如下布置：
-(```
+```
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 
@@ -36,5 +36,5 @@ const router = createRouter({
 })
 
 export default router
-```)
+```
 
