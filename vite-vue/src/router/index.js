@@ -1,38 +1,50 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/views/home/Home.vue'
-import About from '@/views/about/About.vue'
-import Product from '@/views/product/index.vue'
-import Py from '@/views/product/Py/index.vue'
+import Layout from'@/views/Layout/index.vue'
+import Login from'@/views/Login/index.vue'
+import Home from'@/views/Home/index.vue'
 
+// Goods
+const Goods = ()=>import('@/views/Goods/index.vue')
+const GoodsList = ()=>import('@/views/Goods/GoodsList.vue')
+const Category = ()=>import('@/views/Goods/Category.vue')
+// console.log(Goods);
+// import Goods from '@/views/Goods/index.vue'
 
-
-
-const routes = [
+const routes = [ 
   {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About
-  },
-  {
-    path: '/product',
-    name: 'Product',
-    component: Product,
+    path:'/',
+    component:Layout,
     children:[
       {
-        path: 'py',
-        // name: 'Py',
-        component: Py,
-
+        path:'/',
+        name:'home',
+        component:Home
+      },
+      {
+        path:'/goods',
+        name:'goods',
+        component:Goods,
+        children:[
+          {
+            path:'list',
+            name:'list',
+            component:GoodsList
+          },
+          {
+            path:'category',
+            name:'category',
+            component:Category
+          }
+        ]
       }
     ]
+
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
   }
-  
-   
 ]
 
 const router = createRouter({

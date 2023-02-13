@@ -1,5 +1,5 @@
 <template>
-  <h2>为了部落</h2>
+  <h2>good categories</h2>
 </template>
 
 <script>
