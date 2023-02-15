@@ -1,20 +1,32 @@
 <template>
   <div class="menu">
-    <MyMenu></MyMenu>
+    <MyMenu :isClose="isClose"></MyMenu>
   </div>
   <div class="content">
-    <Content></Content>
+    <Content :isClose="isClose" @change="change"></Content>
   </div>
 </template>
 
 <script>
-import MyMenu from "./MyMenu.vue";
-import Content from "./Content.vue";
-
+import MyMenu from "@/components/Layout/MyMenu.vue";
+import Content from "@/components/Layout/Content.vue";
+import { ref } from "vue";
 export default {
   components: {
     MyMenu,
     Content,
+  },
+  setup() {
+    //本组件为父组件为两个子组件传值
+    let isClose = ref(false);
+    // 修改变量
+    const change = () => {
+      isClose.value = !isClose.value;
+    };
+    return {
+      isClose,
+      change,
+    };
   },
 };
 </script>
