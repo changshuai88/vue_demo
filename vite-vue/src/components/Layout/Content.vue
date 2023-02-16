@@ -14,8 +14,9 @@
 export default {
   props: ["isClose"],
   emits: ["change"],
-  setup(props, [emit]) {
+  setup(props, { emit }) {
     // 切换菜单折叠和展开
+    // console.log($emit);
     const change = () => {
       emit("change");
     };
