@@ -2,7 +2,7 @@
   <div class="menu">
     <MyMenu :isClose="isClose"></MyMenu>
   </div>
-  <div class="content">
+  <div class="content" :class="{ active: isClose }">
     <Content :isClose="isClose" @change="change"></Content>
   </div>
 </template>
@@ -21,6 +21,9 @@ export default {
     let isClose = ref(false);
     // 修改变量
     const change = () => {
+      // setTimeout(() => {
+      //   isClose.value = !isClose.value;
+      // }, 2000);
       isClose.value = !isClose.value;
     };
     return {
@@ -41,5 +44,8 @@ export default {
 }
 .content {
   padding-left: 200px;
+}
+.active {
+  padding-left: 64px;
 }
 </style>
