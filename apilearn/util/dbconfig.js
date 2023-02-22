@@ -18,6 +18,7 @@ module.exports ={
             console.log('123456')
             if (err) {
                 console.log('连接失败')
+                console.log(err)
                 return;
             }
             // 事件驱动回调
