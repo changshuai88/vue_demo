@@ -38,3 +38,23 @@ const router = createRouter({
 export default router
 ```
 
+# 搭建本地api
+## 部署环境
+1. express安装 npm i -g express
+2. generator安装 npm i -g express-generator
+3. 安装nodemon
+4. 创建express，命令 express 文件名
+5. 命令启动 ：npm start
+6. 改写api从www文件转到app.js
+   ```var app = express();
+
+// 改写
+var http = require('http');
+var server = http.createServer(app);
+
+// 不用在导出
+// module.exports = app;
+
+// 重写端口
+server.listen('3000')
+```
