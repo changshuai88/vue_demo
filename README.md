@@ -46,15 +46,13 @@ export default router
 4. 创建express，命令 express 文件名
 5. 命令启动 ：npm start
 6. 改写api从www文件转到app.js
-   ```var app = express();
-
-// 改写
-var http = require('http');
-var server = http.createServer(app);
-
-// 不用在导出
-// module.exports = app;
-
-// 重写端口
-server.listen('3000')
-```
+   ```
+   var app = express();
+   // 改写
+   var http = require('http');
+   var server = http.createServer(app);
+   // 不用在导出
+   // module.exports = app;
+   // 重写端口
+   server.listen('3000')
+   ```
