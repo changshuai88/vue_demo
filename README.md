@@ -56,3 +56,6 @@ export default router
    // 重写端口
    server.listen('3000')
    ```
+7. 安装MySQL，npm i mysql -S
+8. 创建util文件夹，创建链接数据库文件dbconfig.js
+   

@@ -46,4 +46,4 @@ app.use(function(err, req, res, next) {
 // module.exports = app;
 
 // 重写端口
-server.listen('3000')
+server.listen('3000');
