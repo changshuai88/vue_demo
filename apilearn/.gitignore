@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-
+aliconfig
 
 # local env files
 .env.local
