@@ -1,9 +1,11 @@
 module.exports={
     alicloud:{
-        'accessKeyId': '666666',
-        'accessKeySecret': '6666',
+        'accessKeyId': '***',
+        'accessKeySecret':'***',
         // securityToken: '<your-sts-token>', // use STS Token
         'endpoint': 'https://dysmsapi.aliyuncs.com',
         'apiVersion': '2017-05-25' 
     }
 }
+
+

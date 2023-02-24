@@ -1,13 +1,16 @@
-// 随机生成四位数
-//调用阿里大鱼
+var dbconfig = require('../util/dbconfig')
+//引入阿里大鱼
 const Core =require('@alicloud/pop-core')
+//引入配置项
 const config = require('../util/aliconfig')
 //配置阿里大鱼
 let client = new Core(config.alicloud)
 let requestOption ={
-    method:'POST'
+    method:'POST',
+    formatParams: false,
 }
 
+// 随机生成四位数
 function rand(min,max){
     return Math.floor(Math.random()*(max-min)) +min
 }
@@ -36,6 +39,25 @@ let findCodeAndPhone=(phone,code)=>{
     return 'error';
 }
 
+//验证码登录是否是第一次登录
+let phoneLoginBind = async(phone)=>{
+    let sql = 'select * from user where username=? or phone=?';
+    let sqlArr = [phone,phone]
+    let res = await dbconfig.sySqlConnect(sql,sqlArr);
+    if (res.length) {
+        return res
+    }else{
+        //用户第一次注册，绑定表
+        //用户注册
+        //获取用户详情
+    }
+}
+
+//用户注册方法
+let regUser = ()=>{
+
+}
+
 //真实验证码--大鱼接口
 sendCoreCode=(req,res)=>{
    let phone = req.query.phone;
@@ -43,13 +65,13 @@ sendCoreCode=(req,res)=>{
    //params 参数注意和大鱼中设置的保持一致
    //PhoneNumbers，TemplateParam这两个参数可以自定义
    var params = {
-    "PhoneNumbers": phone,
     "SignName": "平地机配件",
-    "TemplateCode": "SMS_270985314",
-    "TemplateParam": JSON.stringify({"code":code})
+    "TemplateCode": "SMS_270955515",
+    "PhoneNumbers": phone,
+    "TemplateParam":  JSON.stringify({"code":code})
     };
     // 调用大鱼实例
-    client.request('SendMsg',params,requestOption).then((result)=>{
+    client.request('SendSms',params,requestOption).then((result)=>{
         console.log(result);
         if (result.Code =='OK') {
             res.send({
