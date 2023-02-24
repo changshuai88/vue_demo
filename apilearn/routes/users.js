@@ -5,6 +5,6 @@ var User = require('../controllers/UserController')
 /* GET users listing. */
 router.post('/sendCode', User.sendCode);
 router.post('/codePhoneLogin', User.codePhoneLogin);
-
+router.post('/sendCoreCode', User.sendCoreCode);
 
 module.exports = router;

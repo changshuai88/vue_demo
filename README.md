@@ -60,4 +60,7 @@ export default router
 8. 创建util文件夹，创建链接数据库文件dbconfig.js
 9. 安装第三方插件，body-parser
     npm i body-parser --save
+10. 安装阿里大鱼
+    npm i @alicloud/pop-core --save
+    
   

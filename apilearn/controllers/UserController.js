@@ -1,4 +1,13 @@
 // 随机生成四位数
+//调用阿里大鱼
+const Core =require('@alicloud/pop-core')
+const config = require('../util/aliconfig')
+//配置阿里大鱼
+let client = new Core(config.alicloud)
+let requestOption ={
+    method:'POST'
+}
+
 function rand(min,max){
     return Math.floor(Math.random()*(max-min)) +min
 }
@@ -26,6 +35,42 @@ let findCodeAndPhone=(phone,code)=>{
     }
     return 'error';
 }
+
+//真实验证码--大鱼接口
+sendCoreCode=(req,res)=>{
+   let phone = req.query.phone;
+   let code=rand(1000,9999) ;
+   //params 参数注意和大鱼中设置的保持一致
+   //PhoneNumbers，TemplateParam这两个参数可以自定义
+   var params = {
+    "PhoneNumbers": phone,
+    "SignName": "平地机配件",
+    "TemplateCode": "SMS_270985314",
+    "TemplateParam": JSON.stringify({"code":code})
+    };
+    // 调用大鱼实例
+    client.request('SendMsg',params,requestOption).then((result)=>{
+        console.log(result);
+        if (result.Code =='OK') {
+            res.send({
+                "code":200,
+                "msg":"发送成功"
+            });
+            validatePhoneCode.push({
+                'phone':phone,
+                'code':code
+            });
+            console.log(code);
+        }else{
+            res.send({
+                "code":400,
+                "msg":"发送失败"
+            })
+        }
+    })
+
+}
+
 
 //模拟验证码发送接口
 sendCode=(req,res)=>{
@@ -84,5 +129,6 @@ codePhoneLogin = (req,res)=>{
 
 module.exports={
     sendCode,
-    codePhoneLogin
+    codePhoneLogin,
+    sendCoreCode
 }
