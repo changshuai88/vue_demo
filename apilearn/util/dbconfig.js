@@ -39,7 +39,7 @@ module.exports ={
                     reject(err)
                 }else{
                     // 事件驱动回调
-                    conn.query(sql,sqlArr,(err,data)=>{
+                    conn.query(sySql,sqlArr,(err,data)=>{
                         if (err) {
                             reject(err)
                         }else{
