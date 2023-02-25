@@ -295,7 +295,6 @@ let login = (req,res)=>{
                     'msg':"登录成功",
                     'data':data[0]
                 })
-
             }
         }
         dbconfig.sySqlConnect(sql,sqlArr,callBack);
