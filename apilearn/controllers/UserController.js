@@ -200,8 +200,111 @@ let codePhoneLogin = async (req,res)=>{
 
 }
 
+//用户名或者手机号登录
+let login = (req,res)=>{
+    let username = req.query.username,
+    password =req.query.password;
+    //定义手机号正则规则
+    let phone =/^1[3456789]\d{9}$/;
+    //定义邮箱正则规则
+    let email = /^([a-zA-Z]|[0-9])(\w|-)+@[a-zA-Z0-9]+.([a-zA-Z]{2,4})$/;
+    //test()为js正则方法，检测username是否符合正则phone的规则，如果符合返回true
+    if(phone.test(username)){
+        let sql = 'select * from user where phone=? and password =? or username =? and password=?';
+        let sqlArr=[username,password,username,password];
+        let callBack = async (err,data)=>{
+            if(err){
+                console.log(err)
+                res.send({
+                    'code':400,
+                    'msg':"出错了"
+                })
+            }else if(data ==""){
+                res.send({
+                    'code':400,
+                    'msg':"用户名或者密码错误",
+                    'data':[]
+                })
+            }else{
+                let user_id =data[0].id;
+                //调用异步函数，必须在据他最近的函数处加async。
+                let result = await getUserInfo(user_id);
+                data[0].userinfo = result[0];
+                res.send({
+                    'code':200,
+                    'msg':"登录成功",
+                    'data':data[0]
+                })
+
+            }
+        }
+        dbconfig.sySqlConnect(sql,sqlArr,callBack);
+    }else if(email.test(email)){
+        let sql = 'select * from user where email =? and password =?';
+        let sqlArr=[email,password];
+        let callBack=async (err,data)=>{
+            if(err){
+                console.log(err)
+                res.send({
+                    'code':400,
+                    'msg':"出错了"
+                })
+            }else if(data ==""){
+                res.send({
+                    'code':400,
+                    'msg':"邮箱或者密码错误",
+                    'data':[]
+                })
+            }else{
+                let user_id =data[0].id;
+                //调用异步函数，必须在据他最近的函数处加async。
+                let result = await getUserInfo(user_id);
+                data[0].userinfo = result[0];
+                res.send({
+                    'code':200,
+                    'msg':"登录成功",
+                    'data':data[0]
+                })
+
+            }
+        }
+        dbconfig.sySqlConnect(sql,sqlArr,callBack);
+    }else{
+        let sql= 'select * from user where username=? and password=?';
+        let sqlArr =[username,password];
+        let callBack=async (err,data)=>{
+            if(err){
+                console.log(err)
+                res.send({
+                    'code':400,
+                    'msg':"出错了"
+                })
+            }else if(data ==""){
+                res.send({
+                    'code':400,
+                    'msg':"邮箱或者手机号密码错误",
+                    'data':[]
+                })
+            }else{
+                let user_id =data[0].id;
+                //调用异步函数，必须在据他最近的函数处加async。
+                let result = await getUserInfo(user_id);
+                data[0].userinfo = result[0];
+                res.send({
+                    'code':200,
+                    'msg':"登录成功",
+                    'data':data[0]
+                })
+
+            }
+        }
+        dbconfig.sySqlConnect(sql,sqlArr,callBack);
+    }
+}
+
 module.exports={
     sendCode,
     codePhoneLogin,
-    sendCoreCode
+    sendCoreCode,
+    login
 }
