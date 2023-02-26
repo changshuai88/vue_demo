@@ -7,6 +7,6 @@ router.post('/sendCode', User.sendCode);
 router.post('/codePhoneLogin', User.codePhoneLogin);
 router.post('/sendCoreCode', User.sendCoreCode);
 router.post('/login', User.login);
-
+router.post('/editUserInfo',User.editUserInfo);
 
 module.exports = router;
