@@ -62,5 +62,17 @@ export default router
     npm i body-parser --save
 10. 安装阿里大鱼
     npm i @alicloud/pop-core --save
+11. 文件上传的插件
+    npm install --save multer
+    还要安装fs插件
+    npm install --save fs
+    在users.js中引入配置
+    ```
+    let fs = require('fs');
+    let multer = require('multer');
+    var express = require('express');
+    var router = express.Router();
+    var User = require('../controllers/UserController')
+    ```
     
   

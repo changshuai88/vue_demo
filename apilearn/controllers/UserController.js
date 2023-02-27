@@ -161,7 +161,7 @@ let setUserName = async(user_id,username)=>{
 
 //检查用户密码
 let checkUserPwd = async(user_id)=>{
-    let sql = 'select password from user where user_id=?';
+    let sql = 'select password from user where id=?';
     let sqlArr=[user_id];
     let res = await dbconfig.sySqlConnect(sql,sqlArr);
     console.log(res);
@@ -401,7 +401,7 @@ let setPassword = async (req,res)=>{
     if (userPwd) {
         if (oldpassword ==userPwd) {
             let sql ='update user set password=? where id=?';
-            let sqlArr=[password,user_id];
+            let sqlArr=[newpassword,user_id];
             let result = await dbconfig.sySqlConnect(sql,sqlArr); 
             if (result.affectedRows ==1) {
                 res.send({
@@ -422,9 +422,90 @@ let setPassword = async (req,res)=>{
         }
     }else{
         let sql ='update user set password=? where id=?';
-        let sqlArr=[password,user_id];
+        let sqlArr=[newpassword,user_id];
         let result = await dbconfig.sySqlConnect(sql,sqlArr); 
+        if (result.affectedRows ==1) {
+            res.send({
+                'code':200,
+                'msg':"修改密码成功"
+            })
+        }else{
+            res.send({
+                'code':400,
+                'msg':"修改密码失败"
+            })
+        }
     }
+}
+
+//绑定用户邮箱接口
+let bindEmail = async(req,res)=>{
+    let {user_id,email}= req.query;
+    let sql = 'update user set email=? where id=?';
+    let sqlArr =[email,user_id];
+    let result = await dbconfig.sySqlConnect(sql,sqlArr);
+    console.log(result);
+    if (result.affectedRows==1) {
+        res.send({
+            'code':200,
+            'msg':'绑定邮箱成功'
+        })
+    }else{
+        res.send({
+            'code':400,
+            'msg':'绑定邮箱失败'
+        })
+    }
+}
+
+//修改头像
+let editUserImg=(req,res)=>{
+    if(req.file.length ===0){
+        res.render('error',{message:'上传文件不能为空'});
+        return
+    }else{
+        let file = req.file;
+        let fileInfo = {};
+        console.log(file);
+        fs.renameSync('../public/uploads/'+file.filename,'../public/uploads/'+file.originalname);
+        res.set({
+            'content-type':'application/json;charset=utf-8'
+        });
+        let {user_id}=req.query;
+        let imgUrl = 'http://localhost:3000/uploads/'+file.originalname;
+        let sql = 'update user set suerpic=?where id=?';
+        let sqlArr= [imgUrl,user_id];
+        dbconfig.sqlConnect(sql,sqlArr,(err,data)=>{
+            if (err) {
+                console.log(err);
+                throw '出错了'
+            }else{
+                if(data.affectedRows==1){
+                    res.send({
+                        'code':200,
+                        'msg':'修改成功',
+                        'url':imgUrl
+                    })
+                }else{
+                    res.send({
+                        'code':400,
+                        'msg':'修改失败',
+                       
+                    })
+                }
+            }
+        });
+
+
+    }
+}
+
+//退出登录
+let logout = (req,res)=>{
+    res.send({
+        'code':200,
+        'msg':'退出登录'
+    })
 }
 
 module.exports={
@@ -432,5 +513,9 @@ module.exports={
     codePhoneLogin,
     sendCoreCode,
     login,
-    editUserInfo
+    editUserInfo,
+    setPassword,
+    bindEmail,
+    editUserImg,
+    logout
 }
