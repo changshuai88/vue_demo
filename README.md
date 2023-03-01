@@ -75,4 +75,5 @@ export default router
     var User = require('../controllers/UserController')
     ```
     
-  
+12. 多图上传和批量上传是不同的。
+     

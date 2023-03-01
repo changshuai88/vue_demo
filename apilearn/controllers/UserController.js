@@ -500,6 +500,71 @@ let editUserImg=(req,res)=>{
     }
 }
 
+//多图上传
+let uploadMoreImg = (req,res)=>{
+    let files = req.files;
+    if (req.files.length===0) {
+        res.render("error",{message:'上传文件不能为空'});
+        return
+    }else{
+        for (var  i in files) {
+            //设置相应类型及编码
+            res.set({
+                'content-type':'application/json;charset=utf-8'
+            });
+            let file =files[i];
+            fs.renameSync('../public/uploads/'+file.filename,'../public/uploads/'+file.originalname);
+            let {user_id}= req.query;
+            let url = 'http://localhost:3000/uploads/'+file.originalname;
+            let sql = 'insert into image(url,create_time,user_id) values(?,?,?)';
+            let sqlArr = [url,(new Date()).valueOf(),user_id];
+            dbconfig.sqlConnect(sql,sqlArr,(err,data)=>{
+                if (err) {
+                    console.log(err);
+                }else{
+                    if (data.affectedRows ==1) {
+                        res.send({
+                            'code':200,
+                            'msg':'上传成功'
+                        })
+                    }else{
+                        res.send({
+                            'code':400,
+                            'msg':'上传失败'
+                        })
+                    }
+                }
+            })
+
+        }
+    }
+}
+
+//发布视频
+let publish= async (req,res)=>{
+    let (user_id,title,url,path,isopen,posting)= req.query;
+    let sql = 'insert into post(user_id,title,url,path,isopen,posting,create_time) values(?,?,?,?,?,?,?)'
+    let sqlArr=[user_id,title,url,path,isopen,posting,(new Date()).valueOf()];
+    //返回上传视频列表的id
+    let post_id = await dbconfig.sySqlConnect(sql,sqlArr).then(res=>{
+        console.log(res);
+        return res.insetId;
+    }).catch(err=>{
+        return false;
+    });
+    if (post_id) {
+        res.send({
+            'code':200,
+            'msg':'发布失败'
+        })
+    }else{
+        res.send({
+            'code':400,
+            'msg':'发布失败'
+        })
+    }
+}
+
 //退出登录
 let logout = (req,res)=>{
     res.send({
@@ -517,5 +582,7 @@ module.exports={
     setPassword,
     bindEmail,
     editUserImg,
+    uploadMoreImg,
+    publish,
     logout
 }

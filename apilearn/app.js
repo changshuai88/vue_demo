@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var followRouter = require('./routes/follow');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended:true}))
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/follow',followRouter);
 
 // catch 404 and forward to error handler 获取404错误
 // app.use(function(req, res, next) {
