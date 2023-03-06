@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+// import { ref } from "vue";
 import { useRoute } from "vue-router";
 export default {
   // 接受父组件的值

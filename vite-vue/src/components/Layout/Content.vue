@@ -1,8 +1,8 @@
 <template>
   <div class="header">
     <div class="icon">
-      <el-icon v-if="isClose" @click="change"><Expand /></el-icon>
-      <el-icon v-else @click="change"><Fold /></el-icon>
+      <el-icon v-if="isClose" @click="change"> <Expand /></el-icon>
+      <el-icon v-else @click="change"> <Fold /></el-icon>
     </div>
 
     <div class="right">
@@ -87,6 +87,7 @@ export default {
     }
     .loginout {
       margin-top: 2px;
+      cursor: pointer;
     }
   }
 }
